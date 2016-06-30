@@ -141,9 +141,9 @@
 
   var acceleration = -0.01;
   $('#btn').on('click', function () {
-    var btnTop = $('#btn')[0].clientTop,
+    var btnTop = $('#btn')[0].offsetTop - $('body')[0].scrollTop,
       btnLeft = $('#btn')[0].offsetLeft,
-      mallbarTop = $('#mallbar')[0].clientTop,
+      mallbarTop = $('#mallbar')[0].offsetTop,
       mallbarLeft = $('#mallbar')[0].offsetLeft;
 
     var timeout = 1000;
