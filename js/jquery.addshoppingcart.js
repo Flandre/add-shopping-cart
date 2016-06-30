@@ -33,6 +33,7 @@
   });
 
   function runAnimation(wares, top, topStep, accele, left, leftStep, maxRight, timeout) {
+    //  每次绘制都缩小
     wares.width(wares.width() - 0.3);
     wares.height(wares.width() - 0.3);
     if (left < maxRight) {
@@ -56,8 +57,9 @@
   }
 
   function shoppingCartAnimate() {
-    shoppingCartObj.append('<span class="test">+1</span>');
-    $('.test').addClass('slideOutUp')
-
+    shoppingCartObj.append('<span class="addOneWare">+1</span>');
+    $('.addOneWare').addClass('slideOutUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (){
+      $('.addOneWare').remove()
+    })
   }
 })(jQuery);

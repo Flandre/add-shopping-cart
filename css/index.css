@@ -70,9 +70,9 @@ html, body {
         opacity: 1;
     }
     to {
+        visibility: hidden;
         opacity: 0;
         top:-70px;
-        transform: translate3d(0, -100%, 0)
     }
 }
 
