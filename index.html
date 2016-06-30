@@ -6,7 +6,7 @@
   <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="test"></div>
+<div class="add-wares"></div>
 <br>
 <br>
 <br>
@@ -144,12 +144,18 @@
 <br>
 1
 
-<div class="Mallbar" id="mallbar"></div>
+<div class="Mallbar" id="mallbar">
+  <span>购物车</span>
+</div>
 
 <script src="jquery.min.js"></script>
 <script src="jquery.addshoppingcart.js"></script>
 <script>
-  $('#btn').addShoppingcart($('.Mallbar'))
+  $('#btn').addShoppingcart({
+    mallBarObj: $('.Mallbar'),
+    timeout: 1000,
+    frame: 100
+  })
 </script>
 </body>
 </html>
