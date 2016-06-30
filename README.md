@@ -1,5 +1,7 @@
 #Add-shopping-cart-animation
 
+[测试地址](https://flandre.github.io/add-shopping-cart/)
+
 ##使用方法
 
 ```javascript
