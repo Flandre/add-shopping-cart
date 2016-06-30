@@ -46,7 +46,6 @@
 <br>
 <br>
 <br>
-<button id="btn">加入购物车</button><br>
 <br>
 <br>
 <br>
@@ -63,7 +62,6 @@
 <br>
 <br>
 <br>
-<br><br>
 <br>
 <br>
 <br>
@@ -78,9 +76,9 @@
 <br>
 <br>
 <br>
+<button id="btn">加入购物车</button>
 <br>
 <br>
-<br><br>
 <br>
 <br>
 <br>
@@ -97,7 +95,6 @@
 <br>
 <br>
 <br>
-<br><br>
 <br>
 <br>
 <br>
@@ -114,7 +111,41 @@
 <br>
 <br>
 <br>
-<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -139,7 +170,7 @@
 <script src="jquery.min.js"></script>
 <script>
 
-  var acceleration = -0.01;
+  var acceleration;
   $('#btn').on('click', function () {
     var btnTop = $('#btn')[0].offsetTop - $('body')[0].scrollTop,
       btnLeft = $('#btn')[0].offsetLeft,
@@ -149,19 +180,16 @@
     var timeout = 1000;
 
     var frame = 100;
-
-    //var V0 = ((mallbarTop - btnTop) - 1/2 * acceleration * frame * frame) / frame;
-    var V0 = -10;
-
-    acceleration = ((mallbarTop - btnTop) -V0 * frame)/(1/2 * frame * frame);
+    //  计算物体垂直方向初速度，按钮离顶部越近则初速度越小
+    var V0 = -btnTop / 40;
+    //  计算物体加速度
+    acceleration = ((mallbarTop - btnTop) - V0 * frame) * 2 / (frame * frame);
 
     runAnimation($('.test'), btnTop, V0, btnLeft, (mallbarLeft - btnLeft) / frame, mallbarLeft, timeout / frame);
 
-    //console.log($('#btn').offset().top + ',' + $('#mallbar').offset().top)
   });
 
   function runAnimation(goods, top, topStep, left, leftStep, maxRight, timeout) {
-    //alert(goods+','+top+','+right+','+rightStep+','+maxRight)
     if (left < maxRight) {
       //alert(1);
       left += leftStep;
