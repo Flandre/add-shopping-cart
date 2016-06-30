@@ -21,7 +21,7 @@
         var V0 = -btnTop / 40;
         //  计算物体加速度
         var accele = ((mallbarTop - btnTop) - V0 * frame) * 2 / (frame * frame);
-        $('body').append('<div class="add-wares"></div>');
+        $('body').append('<div class="add-wares"><img src="testImg.jpg"></div>');
 
         runAnimation($('.add-wares'), btnTop, V0, accele, btnLeft, (mallbarLeft - btnLeft) / frame, mallbarLeft, timeout / frame);
       })
