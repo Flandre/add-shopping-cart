@@ -3,8 +3,7 @@
     addShoppingcart: function (options) {
       var defaults = {
         mallBarObj: $('.Mallbar'),
-        timeout: 1000,
-        frame: 100
+        timeout: 1000
       };
       options = $.extend(defaults, options);
       var o = options;
@@ -17,11 +16,12 @@
         //  设置动画总延时
         var timeout = o.timeout;
         //  设置动画帧数
-        var frame = o.frame;
+        var frame = 100;
         //  计算物体垂直方向初速度，按钮离顶部越近则初速度越小
         var V0 = -btnTop / 40;
         //  计算物体加速度
         var accele = ((mallbarTop - btnTop) - V0 * frame) * 2 / (frame * frame);
+        $('body').append('<div class="add-wares"></div>');
 
         runAnimation($('.add-wares'), btnTop, V0, accele, btnLeft, (mallbarLeft - btnLeft) / frame, mallbarLeft, timeout / frame);
       })
@@ -41,6 +41,8 @@
         });
         runAnimation(wares, top, topStep, accele, left, leftStep, maxRight, timeout);
       }, timeout);
+    }else{
+      $('.add-wares').remove()
     }
   }
 })(jQuery);
