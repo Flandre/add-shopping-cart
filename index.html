@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link href="index.css" rel="stylesheet" type="text/css">
+  <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <br>
@@ -144,14 +144,17 @@
 1
 
 <div class="Mallbar" id="mallbar">
-  <span>购物车</span>
+  <div class="shopping-cart">
+  </div>
+  <span class="text">购物车</span>
 </div>
 
-<script src="jquery.min.js"></script>
-<script src="jquery.addshoppingcart.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.addshoppingcart.js"></script>
 <script>
   $('#btn').addShoppingcart({
     mallBarObj: $('.Mallbar'),
+    shoppingCartObj: $('.shopping-cart'),
     timeout: 1000
   })
 </script>

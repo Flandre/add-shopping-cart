@@ -1,0 +1,86 @@
+/* 通用 */
+html, body {
+    height: 100%;
+}
+/* 右侧购物车条 */
+.Mallbar {
+    width: 30px;
+    height: 80px;
+    padding:30px 5px;
+    background: #000;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 30%;
+}
+.Mallbar .text{
+    color: #fff;
+}
+.Mallbar .shopping-cart{
+    margin: 0 auto;
+    width:20px;
+    height:20px;
+    background: url("img/shopping-cart-icon.png") center no-repeat;
+    position: relative;
+}
+.Mallbar .shopping-cart span{
+    margin: 0 auto;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background-color: #ad021e;
+    color: #fff;
+    font-size:12px;
+    padding:3px;
+    position: absolute;
+    left:0;
+}
+
+/*--- 插件使用的 ---*/
+/* 商品 */
+.add-wares {
+    width: 50px;
+    height: 50px;
+    background: #000;
+    border-radius: 50%;
+    position: fixed;
+    overflow: hidden;
+}
+.add-wares img{
+    width:100%;
+    height:auto;
+}
+
+
+@-webkit-keyframes slideOutUp {
+    0% {
+        top:0;
+        opacity: 1;
+    }
+    to {
+        visibility: hidden;
+        top:-70px;
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutUp {
+    0% {
+        top:0;
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        top:-70px;
+        transform: translate3d(0, -100%, 0)
+    }
+}
+
+.slideOutUp {
+    -webkit-animation-name: slideOutUp;
+    animation-name: slideOutUp;
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}

@@ -1,18 +1,22 @@
 (function ($) {
+  var shoppingCartObj;
   $.fn.extend({
     addShoppingcart: function (options) {
       var defaults = {
         mallBarObj: $('.Mallbar'),
+        shoppingCartObj: $('.shopping-cart'),
         timeout: 1000
       };
       options = $.extend(defaults, options);
       var o = options;
       this.on('click', function () {
         //  获取按钮坐标和购物车条的坐标
-        var btnTop = this.offsetTop - $('body')[0].scrollTop,
-          btnLeft = this.offsetLeft,
-          mallbarTop = o.mallBarObj[0].offsetTop,
-          mallbarLeft = o.mallBarObj[0].offsetLeft;
+        var btnTop = this.offsetTop - $('body')[0].scrollTop;
+        var btnLeft = this.offsetLeft;
+        var mallbarTop = o.mallBarObj[0].offsetTop;
+        var mallbarLeft = o.mallBarObj[0].offsetLeft;
+
+        shoppingCartObj = o.shoppingCartObj;
         //  设置动画总延时
         var timeout = o.timeout;
         //  设置动画帧数
@@ -21,7 +25,7 @@
         var V0 = -btnTop / 40;
         //  计算物体加速度
         var accele = ((mallbarTop - btnTop) - V0 * frame) * 2 / (frame * frame);
-        $('body').append('<div class="add-wares"><img src="testImg.jpg"></div>');
+        $('body').append('<div class="add-wares"><img src="images/testImg.jpg"></div>');
 
         runAnimation($('.add-wares'), btnTop, V0, accele, btnLeft, (mallbarLeft - btnLeft) / frame, mallbarLeft, timeout / frame);
       })
@@ -29,6 +33,8 @@
   });
 
   function runAnimation(wares, top, topStep, accele, left, leftStep, maxRight, timeout) {
+    wares.width(wares.width() - 0.3);
+    wares.height(wares.width() - 0.3);
     if (left < maxRight) {
       //alert(1);
       left += leftStep;
@@ -41,8 +47,17 @@
         });
         runAnimation(wares, top, topStep, accele, left, leftStep, maxRight, timeout);
       }, timeout);
-    }else{
-      $('.add-wares').remove()
+    } else {
+      $('.add-wares').remove();
+      setTimeout(function(){
+        shoppingCartAnimate();
+      },100)
     }
+  }
+
+  function shoppingCartAnimate() {
+    shoppingCartObj.append('<span class="test">+1</span>');
+    $('.test').addClass('slideOutUp')
+
   }
 })(jQuery);
