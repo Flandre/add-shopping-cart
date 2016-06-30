@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+
+    .Mallbar {
+      width: 40px;
+      height: 140px;
+      background: #000;
+      position: fixed;
+      right: 0;
+      top: 30%;
+    }
+
+    .test {
+      width: 100px;
+      height: 100px;
+      background: #f00;
+      position: fixed;
+      top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="test"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<button id="btn">加入购物车</button><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+1
+
+<div class="Mallbar" id="mallbar"></div>
+
+<script src="jquery.min.js"></script>
+<script>
+
+  var acceleration = 0; //  设置加速度
+  var timeout = 1000; //  设置动画执行时间
+  var frame = 100;  //  设置动画运行帧数
+  var maxTop = 200; //  设置到达最大高度
+
+
+  $('#btn').on('click', function () {
+    var btnTop = $('#btn')[0].offsetTop - $('body')[0].scrollTop,
+      btnLeft = $('#btn')[0].offsetLeft,
+      mallbarTop = $('#mallbar')[0].offsetTop,
+      mallbarLeft = $('#mallbar')[0].offsetLeft;
+
+    //var V0 = ((mallbarTop - btnTop) - 1/2 * acceleration * frame * frame) / frame;
+    var V0 = -10;
+
+    acceleration = ((mallbarTop - btnTop) -V0 * frame)/(1/2 * frame * frame);
+
+    runAnimation($('.test'), btnTop, V0, btnLeft, (mallbarLeft - btnLeft) / frame, mallbarLeft, timeout / frame);
+
+    //console.log($('#btn').offset().top + ',' + $('#mallbar').offset().top)
+  });
+
+  function runAnimation(goods, top, topStep, left, leftStep, maxLeft, timeout) {
+    //alert(goods+','+top+','+right+','+rightStep+','+maxRight)
+    if (left < maxLeft) {
+      left += leftStep;
+      top += topStep;
+      topStep += acceleration;
+      setTimeout(function () {
+        goods.css({
+          'top': top + 'px',
+          'left': left + 'px'
+        });
+        runAnimation(goods, top, topStep, left, leftStep, maxLeft, timeout);
+      }, timeout);
+    }
+  }
+</script>
+</body>
+</html>
