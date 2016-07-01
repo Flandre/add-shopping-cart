@@ -37,7 +37,6 @@
     wares.width(wares.width() - 0.3);
     wares.height(wares.width() - 0.3);
     if (left < maxRight) {
-      //alert(1);
       left += leftStep;
       top += topStep;
       topStep += accele;
